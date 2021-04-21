@@ -1,0 +1,282 @@
+---
+title: "日本語Word文書へエクスポート"
+author: "あなたの名前"
+date: "`r format(Sys.Date(), format='%Y/%m/%d')`"
+output:
+  officedown::rdocx_document:
+    toc: no
+    plots:
+      style: "Normal"
+      align: center
+      topcaption: no
+      width: 1.0
+      caption:
+        style: "Image Caption"
+        pre: "図"
+        sep: ":"
+    tables:
+      style: "Table"
+      layout: "autofit"
+      caption:
+        style: "Table Caption"
+        pre: "表"
+        sep: ":"
+    lists:
+      ol.style: null
+      ul.style: null
+    mapstyles:
+      Normal: ['First Paragraph', 'Author', 'Date']
+    page_size:
+      width: 8.3
+      height: 11.7
+      orient: "portrait"
+    page_margins:
+      bottom: 1
+      top: 1
+      right: 1.25
+      left: 1.25
+      header: 0.5
+      footer: 0.5
+      gutter: 0.5
+    reference_num: true
+bibliography: word.bib
+---
+
+```{r setup-officedown, include=F}
+knitr::opts_hooks$set(
+  label = function(options){
+    if(is.null(options$fig.id)) options$fig.id <- options$label
+    if(is.null(options$tab.id)) options$tab.id <- options$label
+    options
+  }
+)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.cap = TRUE,
+  dev = if(Sys.info()["sysname"] %in% c("Windows", "Darwin")) 'ragg_png' else 'png'
+  )
+library(officedown)
+library(officer)
+
+fp <- fp_par(
+  text.align = "center", 
+  padding.bottom = 20, padding.top = 120, 
+  border.bottom = fp_border())
+
+ft <- fp_text(shading.color='#EFEFEF', bold = TRUE)
+```
+
+
+\newpage
+
+この文書では `r ftext("officedown", ft)` パッケージのほとんどの機能が使われています 
+`r fp`
+
+## 目次
+
+<!---BLOCK_TOC--->
+
+## 図一覧
+
+<!---BLOCK_TOC{seq_id: 'fig'}--->
+
+## 表一覧
+
+<!---BLOCK_TOC{seq_id: 'tab'}--->
+
+
+\newpage
+
+
+## R Markdown
+
+これは R Markdown の文書です. Markdown は HTML, PDF, そして MS Word 文書を執筆するためのはシンプルな構文です. 
+
+* R Markdown の詳細は  <http://rmarkdown.rstudio.com> をご覧ください.
+* **officedown** パッケージの詳しい使い方は以下のいずれかをご覧ください
+    1. 公式ドキュメント <https://davidgohel.github.io/officedown/>
+    2. "officeverse" <https://ardata-fr.github.io/officeverse/officedown-for-word.html>
+
+**knit** ボタンをクリックすると, 文書内の本文も埋め込んだ R コードチャンクも全て含まれた文書が生成されます. R コードチャンクをこのように埋め込むことができます.
+
+```{r cars}
+summary(cars)
+```
+
+次のセクション\@ref(include-plot)ではグラフを埋め込んでみます. セクション\@ref(include-table)では表の埋め込み方を紹介します.
+
+
+## セクション
+
+### 二段組みのセクション
+
+<!---BLOCK_MULTICOL_START--->
+
+いろはにほへと　ちりぬるを
+わかよたれそ　つねならむ
+うゐのおくやま　けふこえて
+あさきゆめみし　ゑひもせす
+色は匂へど　散りぬるを
+我が世誰ぞ　常ならむ
+有為の奥山　今日越えて
+浅き夢見じ　酔ひもせず
+
+
+`r run_columnbreak()`
+吾輩猫である。名前はまだ無い。
+
+どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後ご猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。
+
+この書生の掌の裏でしばらくはよい心持に坐っておったが、しばらくすると非常な速力で運転し始めた。書生が動くのか自分だけが動くのか分らないが無暗に眼が廻る。胸が悪くなる。到底助からないと思っていると、どさりと音がして眼から火が出た。それまでは記憶しているがあとは何の事やらいくら考え出そうとしても分らない。
+
+<!---BLOCK_MULTICOL_STOP{widths: [3,3], space: 0.2, sep: true}--->
+
+### 二段組は以上
+
+
+いろはにほへと　ちりぬるを
+わかよたれそ　つねならむ
+うゐのおくやま　けふこえて
+あさきゆめみし　ゑひもせす
+色は匂へど　散りぬるを
+我が世誰ぞ　常ならむ
+有為の奥山　今日越えて
+浅き夢見じ　酔ひもせず
+
+
+<!---BLOCK_LANDSCAPE_START--->
+
+### 横長のページ
+
+いろはにほへと　ちりぬるを
+わかよたれそ　つねならむ
+うゐのおくやま　けふこえて
+あさきゆめみし　ゑひもせす
+色は匂へど　散りぬるを
+我が世誰ぞ　常ならむ
+有為の奥山　今日越えて
+浅き夢見じ　酔ひもせず
+
+```{r, echo=FALSE}
+barplot(1:5, col=1:5)
+```
+
+<!---BLOCK_LANDSCAPE_STOP--->
+
+### 通常セクション
+
+吾輩猫である。名前はまだ無い。
+
+どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後ご猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。
+
+この書生の掌の裏でしばらくはよい心持に坐っておったが、しばらくすると非常な速力で運転し始めた。書生が動くのか自分だけが動くのか分らないが無暗に眼が廻る。胸が悪くなる。到底助からないと思っていると、どさりと音がして眼から火が出た。それまでは記憶しているがあとは何の事やらいくら考え出そうとしても分らない。
+
+## 表を含めよう {#include-table}
+
+整った数値表を表示するには, 事前にチャンク内で **officedown** の読み込みが必要です. なお, `knitr::kable()` は逆にレイアウトが崩れることがあります.
+
+### 表の表示
+
+```{r}
+head(mtcars)
+```
+
+### 表の相互参照
+
+チャンクラベルと `tab.cap` を使うと表\@ref(tab:table-example)の番号とリンクが自動参照できます.
+
+```{r table-example, echo=F, tab.cap="mtcars"}
+head(mtcars)
+```
+
+### flextable パッケージの利用
+
+**flextable** パッケージもサポートしています. もしこのパッケージをインストールしているなら, 以下に表が表示されます (`r if("flextable" %in% installed.packages()) "表\\@ref(tab:flextable-example)" else ""`).
+
+```{r flextable-example, tab.cap='flextable'}
+if(require("flextable")){
+  ft <- flextable(head(mtcars, n = 10))
+  ft <- fontsize(ft, size = 9, part = "all")
+  ft <- compose(x = ft, j = "mpg",
+    value = as_paragraph(
+      value = lollipop(value = mpg, min = 0, max = 30, positivecol = "#DD2233", rangecol = "#DD2233")
+      ))
+  ft <- compose(x = ft, j = "drat",
+    value = as_paragraph(
+      value = minibar(value = drat, max = 6, barcol = "#DD3322")
+      ))
+  ft <- compose(x = ft, j = "qsec",
+    value = as_paragraph(
+      value = linerange(value = qsec)
+      ))
+  ft <- set_table_properties(ft, layout = "autofit")
+  ft
+  }
+```
+
+## グラフを含めよう {#include-plot}
+
+### グラフの表示
+
+グラフを埋め込むこともできます.
+
+```{r, echo=F}
+plot(pressure, xlab="気温", ylab="気圧")
+```
+
+グラフを生成している R コードを掲載しないために, コードチャンクに `echo = FALSE` というパラメータを追加していることに注意してください.
+
+### 散布図
+
+表と同じように, `fig.cap` を指定すると図\@ref(fig:pressure)のように参照できます.
+
+```{r pressure, echo=FALSE, fig.cap="標準グラフィックによるプロット"}
+plot(pressure, xlab="気温", ylab="気圧")
+```
+
+### ggplot2
+
+もちろん **ggplot2** も使用できます. もしインストール済みなら, 以下にグラフが表示されます (`r if("ggplot2" %in% installed.packages()) "図\\@ref(fig:ggplot-example)" else ""`)..
+
+```{r ggplot-example, echo=F, eval="ggplot2" %in% installed.packages(), message=F, fig.cap="ggplot2 によるグラフ"}
+if(require(ggplot2)){
+  ggplot(mtcars, aes(x = mpg, y = disp, color = cyl)) +
+    geom_point() + labs(x = "ガロン毎マイル", y = "排気量")
+}
+```
+
+## 箇条書き
+
+
+吾輩猫である。名前はまだ無い。
+
+* どこで生れたかとんと見当がつかぬ。
+    - 何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+    - 吾輩はここで始めて人間というものを見た。
+        - しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。
+        - この書生というのは時々我々を捕えて煮て食うという話である。
+    - しかしその当時は何という考もなかったから別段恐しいとも思わなかった。
+* ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。
+
+
+1. どこで生れたかとんと見当がつかぬ。
+    1. 何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している
+    1. 吾輩はここで始めて人間というものを見た。
+        1. しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。
+        1. この書生というのは時々我々を捕えて煮て食うという話である。
+    1. しかしその当時は何という考もなかったから別段恐しいとも思わなかった。
+1. ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。
+
+## 引用しよう {#biblio}
+
+```{r echo=F, message=F, warning=F}
+knitr::write_bib(c("rmarkdown", "officedown"), file = "word.bib")
+```
+
+通常の R Markdown と同様に,  [@R-officedown; @R-rmarkdown] のように参考文献の引用ができます.
+
+文献リストスタイルは `csl` フィールドで指定できます. BibTeX/BibLaTeX は使用できません.
+
+「参考文献」の見出しは自分で書く必要があります.
+
+## 参考文献

@@ -1,0 +1,44 @@
+---
+title: "日本語Word文書へエクスポート"
+author: "ill-identified"
+date: "`r format(Sys.Date(), format='%Y/%m/%d')`"
+output:
+  officedown::rdocx_document:
+    toc: no
+    plots:
+      caption:
+        pre: "図"
+    tables:
+      caption:
+        pre: "表"
+---
+
+```{r setup-officedown, include=F}
+knitr::opts_hooks$set(
+  label = function(options){
+    if(is.null(options$fig.id)) options$fig.id <- options$label
+    if(is.null(options$tab.id)) options$tab.id <- options$label
+    options
+  }
+)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.cap = TRUE,
+  dev = if(Sys.info()["sysname"] %in% c("Windows", "Darwin")) 'ragg_png' else 'png'
+  )
+library(officedown)
+library(officer)
+
+fp <- fp_par(
+  text.align = "center", 
+  padding.bottom = 20, padding.top = 120, 
+  border.bottom = fp_border())
+
+ft <- fp_text(shading.color='#EFEFEF', bold = TRUE)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+```
+
+ここから本文
