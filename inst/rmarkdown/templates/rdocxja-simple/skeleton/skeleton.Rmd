@@ -24,7 +24,7 @@ knitr::opts_hooks$set(
 knitr::opts_chunk$set(
   echo = TRUE,
   fig.cap = TRUE,
-  dev = if(Sys.info()["sysname"] %in% c("Windows", "Darwin")) 'ragg_png' else 'png'
+  if(Sys.info()["sysname"] %in% c("Windows", "Darwin") && "ragg" %in% installed.packages() && packageVersion("ragg") > 1.1) 'ragg_png' else 'png'
   )
 library(officedown)
 library(officer)
