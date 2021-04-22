@@ -160,7 +160,8 @@ head(mtcars)
 
 ### flextable パッケージの利用
 
-**flextable** パッケージもサポートしています. もしこのパッケージをインストールしているなら, 以下に表が表示されます (`r if("flextable" %in% installed.packages()) "表\\@ref(tab:flextable-example)" else ""`).
+**flextable** パッケージもサポートしています. もしこのパッケージをインストールしているなら, 以下に表が表示されます (`r if("flextable" %in% installed.packages()) "表" else ""`
+`r if("flextable" %in% installed.packages()) "\\@ref(tab:flextable-example)" else ""`).
 
 ```{r flextable-example, tab.cap='flextable'}
 if(require("flextable")){
