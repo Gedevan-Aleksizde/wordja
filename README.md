@@ -1,6 +1,8 @@
 
 # Wordja
 
+R Markdown template with officedown package for Japanese users
+
 ## 概要
 
 **officedown** 等を使用した R Markdown テンプレートのみのパッケージ
