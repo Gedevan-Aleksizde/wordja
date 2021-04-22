@@ -10,7 +10,7 @@
 Mac ユーザは v1.1.0 以降の **ragg** のインストール推奨
 
 ``` r
-remotes::install_github("Gedevan-Aleksizde/wordja")
+remotes::install_github("Gedevan-Aleksizde/wordja", upgrade = "never")
 ```
 
 ## 使い方
