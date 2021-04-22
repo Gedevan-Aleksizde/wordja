@@ -15,6 +15,8 @@ Mac ユーザは v1.1.0 以降の **ragg** のインストール推奨
 remotes::install_github("Gedevan-Aleksizde/wordja", upgrade = "never")
 ```
 
+または, zip ファイルとしてダウンロードして `install.packages()` 関数でインストール.
+
 ## 使い方
 
 RStudio でテンプレート選択
