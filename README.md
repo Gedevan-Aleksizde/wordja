@@ -9,13 +9,17 @@ R Markdown template with officedown package for Japanese users
 
 ## インストール
 
-Mac ユーザは v1.1.0 以降の **ragg** のインストール推奨
+CRAN には登録していません (登録予定もいまのところありません)
 
 ``` r
 remotes::install_github("Gedevan-Aleksizde/wordja", upgrade = "never")
 ```
 
 または, zip ファイルとしてダウンロードして `install.packages()` 関数でインストール.
+
+Mac ユーザは v1.1.0 以降の **ragg** のインストールも推奨します
+
+
 
 ## 使い方
 
