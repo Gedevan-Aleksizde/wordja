@@ -7,6 +7,8 @@ R Markdown template with officedown package for Japanese users
 
 **officedown** 等を使用した R Markdown テンプレートのみのパッケージ
 
+PDF/HTML は [rmdja](https://github.com/Gedevan-Aleksizde/rmdja) をご検討ください
+
 ## インストール
 
 CRAN には登録していません (登録予定もいまのところありません)
